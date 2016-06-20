@@ -31,6 +31,10 @@ app.get('/', function (request, response) {
     });
 });
 
+app.get('*', function (request, response) {
+    response.json(request.url);
+});
+
 app.listen(8000, function () {
     console.log('Ecample app listening on port 8000!');
 });
