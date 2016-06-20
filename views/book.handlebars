@@ -1,3 +1,8 @@
 <h1>Node: Book page</h1>
-<h2>Title: {{book.title}}</h2>
-<p>{{book.description}}</p>
+{{#each books}}
+    {{#if @first}}
+        <h2>Title: {{title}}</h2>
+        <p>{{description}}</p>
+        <p><a onclick="return confirm('Really?!');" href="book/{{id}}/delete">delete book</a></p>
+    {{/if}}
+{{/each}}

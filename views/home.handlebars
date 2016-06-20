@@ -2,5 +2,5 @@
 {{#each books}}
     <h2>Title: {{title}}</h2>
     <p>{{description}}</p>
-    <p><a onclick="return confirm('Really?!');" href="book/{{id}}/delete">delete book</a></p>
+    <p><a href="book/{{id}}">Show</a> or <a onclick="return confirm('Really?!');" href="book/{{id}}/delete">delete book</a></p>
 {{/each}}
