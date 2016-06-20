@@ -20,23 +20,28 @@ var app = express();
 app.engine('handlebars', express_handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.get('/', function (request, response) {
+app.use(function (req, res, next) {
+    console.log(req.url);
+    next();
+});
+
+app.get('/', function (req, res) {
     knex.select('*').from('books').then(function (results) {
-        response.render('home', {
+        res.render('home', {
             books: results
         });
-        //response.json(results);
+        //res.json(results);
     }).catch(function (error) {
         console.log(error);
     });
 });
 
-app.get('*', function (request, response) {
-    response.json(request.url);
+app.get('*', function (req, res) {
+
 });
 
 app.listen(8000, function () {
-    console.log('Ecample app listening on port 8000!');
+    console.log('Example app listening on port 8000!');
 });
 
 
