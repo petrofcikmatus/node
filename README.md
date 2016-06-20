@@ -9,6 +9,8 @@ npm install knex --save
 npm install nodemon --save
 ```
 
+Note: `--save` attribute adds dependency to `package.json` file.
+
 ## Run
 
 ```
@@ -20,6 +22,8 @@ Or
 ```
 node app.js
 ```
+
+Node: `nodemon` watches for changes and does not need to restart server.
 
 ## Notes
 
