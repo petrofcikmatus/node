@@ -29,15 +29,15 @@ Node: `nodemon` watches for changes and does not need to restart server.
 
 - https://www.paralelnipolis.cz/
 - call stack, najprv synchronne funkcie a potom skočí na asynchronne.
-- node app.js
 - http://expressjs.com/
+- http://handlebarsjs.com/
 - http://knexjs.org/
 - je kompilovaný, pri spustení sa skompiluje a je to
 - 1 process carry about everything, must catch errors, memory leaks...
 - https://github.com/ericf/express-handlebars (or underscore, jade)
 - http://nodemon.io/
-- nvm - node version manager
+- https://github.com/creationix/nvm - node version manager
 - https://github.com/ParalelniPolis
-- https://github.com/petrofcikmatus/rfid-access-system-api
-- selenium v nodejs, http://webdriver.io
-- https://mochajs.org/ test framework for node
+- https://github.com/ParalelniPolis/rfid-access-system-api
+- http://webdriver.io/ - selenium v nodejs
+- https://mochajs.org/ - test framework for node
