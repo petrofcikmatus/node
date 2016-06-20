@@ -37,7 +37,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('*', function (req, res) {
-
+    res.json(req.url);
 });
 
 app.listen(8000, function () {
