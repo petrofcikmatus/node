@@ -36,6 +36,16 @@ app.get('/', function (req, res) {
     });
 });
 
+app.get('/book/:id/delete', function (req, res) {
+    var id = req.params.id;
+
+    knex.delete().from('books').where('id', id).then(function (results) {
+        res.redirect('/');
+    }).catch(function (error) {
+        console.log(error);
+    });
+});
+
 app.get('/book/:id', function (req, res) {
     var id = req.params.id;
 
