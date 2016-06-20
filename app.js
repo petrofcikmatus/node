@@ -36,6 +36,19 @@ app.get('/', function (req, res) {
     });
 });
 
+app.get('/book/:id', function (req, res) {
+    var id = req.params.id;
+
+    knex.select('*').from('books').where('id', id).then(function (results) {
+        res.render('home', {
+            books: results
+        });
+        //res.json(results);
+    }).catch(function (error) {
+        console.log(error);
+    });
+});
+
 app.get('*', function (req, res) {
     res.json(req.url);
 });
