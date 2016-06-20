@@ -15,7 +15,6 @@ var knex = require('knex')({
     }
 });
 
-
 var app = express();
 
 app.engine('handlebars', express_handlebars({defaultLayout: 'main'}));
@@ -23,7 +22,9 @@ app.set('view engine', 'handlebars');
 
 app.get('/', function (request, response) {
     knex.select('*').from('books').then(function (results) {
-        response.render('home');
+        response.render('home', {
+            books: results
+        });
         //response.json(results);
     }).catch(function (error) {
         console.log(error);
