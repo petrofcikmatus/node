@@ -1,6 +1,8 @@
 // @link: http://expressjs.com/
 var express = require('express');
-var app = express();
+
+// @link: https://github.com/ericf/express-handlebars
+var express_handlebars = require('express-handlebars');
 
 // @link: http://knexjs.org/
 var knex = require('knex')({
@@ -13,9 +15,16 @@ var knex = require('knex')({
     }
 });
 
+
+var app = express();
+
+app.engine('handlebars', express_handlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 app.get('/', function (request, response) {
     knex.select('*').from('books').then(function (results) {
-        response.json(results);
+        response.render('home');
+        //response.json(results);
     }).catch(function (error) {
         console.log(error);
     });
