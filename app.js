@@ -38,7 +38,7 @@ app.use(function (req, res, next) {
 // routa na /, teda hlavnú stránku
 app.get('/', function (req, res) {
     knex.select('*').from('books').then(function (results) {
-        res.render('home', {
+        res.render('pages/home', {
             books: results
         });
         //res.json(results);
@@ -52,7 +52,7 @@ app.get('/book/:id', function (req, res) {
     var id = req.params.id;
 
     knex.select('*').from('books').where('id', id).then(function (results) {
-        res.render('book', {
+        res.render('pages/book', {
             books: results
         });
         //res.json(results);
