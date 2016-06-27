@@ -1,7 +1,7 @@
 // pridanie serveru express
 // @link: http://expressjs.com/
 var express = require('express');
-
+var bodyParser = require('body-parser');
 // pridanie template enginu handlebars
 // @link: https://github.com/ericf/express-handlebars
 var express_handlebars = require('express-handlebars');
@@ -26,6 +26,7 @@ app.engine('handlebars', express_handlebars({defaultLayout: 'main'}));
 
 // nastavenie defaultného view enginu na handlebars
 app.set('view engine', 'handlebars');
+app.use(bodyParser.urlencoded({extended:false}));
 
 // pridanie middleware, vždy sa vykoná predtým než sa vykoná nasledujúce
 app.use(function (req, res, next) {
@@ -45,6 +46,16 @@ app.get('/', function (req, res) {
     }).catch(function (error) {
         console.log(error);
     });
+});
+
+// routa na book/:id
+app.post('/book/add', function (req, res) {
+    var title       = req.param.title;
+    var description = req.param.description;
+    console.log();
+    knex('books').insert({title: title, description: description});
+
+    res.send('hi!');
 });
 
 // routa na book/:id
