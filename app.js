@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 // pridanie template enginu handlebars
 // @link: https://github.com/ericf/express-handlebars
 var express_handlebars = require('express-handlebars');
+var session = require('express-session');
 
 // pridanie a nastavenie knex databázového wrapperu
 // @link: http://knexjs.org/
@@ -26,7 +27,15 @@ app.engine('handlebars', express_handlebars({defaultLayout: 'main'}));
 
 // nastavenie defaultného view enginu na handlebars
 app.set('view engine', 'handlebars');
+
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(session({
+    secret: 'some secret!',
+    resave: false,
+    saveUnitialized: true
+}));
+
 
 // pridanie middleware, vždy sa vykoná predtým než sa vykoná nasledujúce
 app.use(function (req, res, next) {
