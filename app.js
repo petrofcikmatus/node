@@ -31,7 +31,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(session({
-    secret: 'some secret!',
+    secret: 'some secret!', // important to stay secret!
     resave: false,
     saveUninitialized: true
 }));
