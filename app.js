@@ -26,7 +26,7 @@ app.engine('handlebars', express_handlebars({defaultLayout: 'main'}));
 
 // nastavenie defaultného view enginu na handlebars
 app.set('view engine', 'handlebars');
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended: false}));
 
 // pridanie middleware, vždy sa vykoná predtým než sa vykoná nasledujúce
 app.use(function (req, res, next) {
@@ -50,12 +50,16 @@ app.get('/', function (req, res) {
 
 // routa na book/:id
 app.post('/book/add', function (req, res) {
-    var title       = req.param.title;
-    var description = req.param.description;
-    console.log();
-    knex('books').insert({title: title, description: description});
 
-    res.send('hi!');
+    var title = req.body.title;
+    var description = req.body.description;
+
+    knex('books').insert({title: title, description: description}).then(function (result) {
+        res.json(result);
+    }).catch(function (error) {
+        console.log(error);
+    });
+
 });
 
 // routa na book/:id
