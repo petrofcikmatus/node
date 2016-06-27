@@ -36,6 +36,19 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use(function (req, res, next) {
+    console.log(req.session);
+
+    req.isAuthentificated = function () {
+        return !!req.session.user;
+    };
+
+    req.session.user = {
+        name: 'Test Testerson'
+    };
+
+    next();
+});
 
 // pridanie middleware, vždy sa vykoná predtým než sa vykoná nasledujúce
 app.use(function (req, res, next) {
@@ -55,6 +68,24 @@ app.get('/', function (req, res) {
     }).catch(function (error) {
         console.log(error);
     });
+});
+
+app.post('/login', function (req, res) {
+    if (
+        req.body.name === 'test' &&
+        req.body.password === 'password'
+    ) {
+        req.session.user = {
+            name: 'Test Testerson'
+        };
+        res.redirect('/');
+    } else {
+        res.send('Wrong username/password.');
+    }
+});
+
+app.get('/login', function (req, res) {
+    res.render('pages/login');
 });
 
 // routa na book/:id
