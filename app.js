@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({
     secret: 'some secret!',
     resave: false,
-    saveUnitialized: true
+    saveUninitialized: true
 }));
 
 
