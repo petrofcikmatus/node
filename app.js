@@ -55,7 +55,7 @@ app.post('/book/add', function (req, res) {
     var description = req.body.description;
 
     knex('books').insert({title: title, description: description}).then(function (result) {
-        res.json(result);
+        res.redirect("/");
     }).catch(function (error) {
         console.log(error);
     });

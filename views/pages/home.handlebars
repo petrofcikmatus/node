@@ -4,3 +4,15 @@
     <p>{{description}}</p>
     <p><a href="book/{{id}}">Show</a> or <a onclick="return confirm('Really?!');" href="book/{{id}}/delete">delete book</a></p>
 {{/each}}
+
+<hr>
+<h2>Add book</h2>
+<form method="post" action="/book/add">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br><br>
+
+    <label for="description">Description:</label><br>
+    <textarea name="description" id="description" cols="30" rows="10"></textarea><br><br>
+
+    <button type="submit">Add book</button>
+</form>
